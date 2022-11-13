@@ -6,8 +6,7 @@ import { Principal } from "@dfinity/principal";
 
 function Item(props) {
   const [name, setname] = useState();
-  const [owner, setowner] = useState();
-
+  
   const id = Principal.fromText(props.id);
   const localHost = "http://localhost:8080/";
   const agent = new HttpAgent({host: localHost});
@@ -19,9 +18,7 @@ function Item(props) {
     });
 
     const name = await NFTActor.getName();
-    const owner = await NFTActor.getOwner();
     setname(name);
-    setOwner(owner.toText());
   }
 
   useEffect(() => {
