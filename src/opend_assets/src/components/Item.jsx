@@ -5,7 +5,7 @@ import { idlFactory } from "../../../declarations/nft";
 import { Principal } from "@dfinity/principal";
 
 function Item(props) {
-<<<<<<< HEAD
+
   const [name, setName] = useState();
   const [owner, setOwner] = useState();
   const [image, setImage] = useState();
@@ -32,22 +32,6 @@ function Item(props) {
     setName(name);
     setOwner(owner.toText());
     setImage(image);
-=======
-  const [name, setname] = useState();
-  
-  const id = Principal.fromText(props.id);
-  const localHost = "http://localhost:8080/";
-  const agent = new HttpAgent({host: localHost});
-  
-  async function loadNFT() {
-    const NFTActor = await Actor.createActor(idlFactory, {
-      agent,
-      canisterid: id,
-    });
-
-    const name = await NFTActor.getName();
-    setname(name);
->>>>>>> e5e3e7fe2cdb0723117c6e5ec907705981ca72ad
   }
 
   useEffect(() => {
@@ -63,12 +47,8 @@ function Item(props) {
         />
         <div className="disCardContent-root">
           <h2 className="disTypography-root makeStyles-bodyText-24 disTypography-h5 disTypography-gutterBottom">
-<<<<<<< HEAD
             {name}
             <span className="purple-text"></span>
-=======
-            {name} <span className="purple-text"></span>
->>>>>>> e5e3e7fe2cdb0723117c6e5ec907705981ca72ad
           </h2>
           <p className="disTypography-root makeStyles-bodyText-24 disTypography-body2 disTypography-colorTextSecondary">
             Owner: {owner}
@@ -80,21 +60,3 @@ function Item(props) {
 }
 
 export default Item;
-
-
-
-
-
-
-
-
-
-# NFT-Marketplace-
-Building an NFT Marketplace
-
-***A Website to mint, buy and sell NFT's***
-
->Processing...
-
-
-![image](https://user-images.githubusercontent.com/96918798/200164332-21e43f1f-4ea0-4c0d-b30e-801602320527.png)
