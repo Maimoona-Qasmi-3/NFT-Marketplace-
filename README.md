@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # To Install and Run the Project
 
 1. start local dfx
@@ -22,7 +21,8 @@ dfx deploy --argument='("CryptoDunks #527", principal "gbdev-tyqsv-hnvqv-7mgz4-4
 4. Head to localhost
 
 http://localhost:8080/
-=======
+
+>=======
 
 # NFT-Marketplace-
 Building an NFT Marketplace
@@ -33,4 +33,3 @@ Building an NFT Marketplace
 
 
 ![image](https://user-images.githubusercontent.com/96918798/200164332-21e43f1f-4ea0-4c0d-b30e-801602320527.png)
->>>>>>> e5e3e7fe2cdb0723117c6e5ec907705981ca72ad
