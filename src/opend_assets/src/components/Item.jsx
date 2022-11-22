@@ -10,7 +10,7 @@ function Item(props) {
   const [owner, setOwner] = useState();
   const [image, setImage] = useState();
 
-  const id = Principal.fromText(props.id);
+  const id = props.id;
 
   const localHost = "http://localhost:8080/";
   const agent = new HttpAgent({ host: localHost });
@@ -47,6 +47,7 @@ function Item(props) {
         />
         <div className="disCardContent-root">
           <h2 className="disTypography-root makeStyles-bodyText-24 disTypography-h5 disTypography-gutterBottom">
+
             {name}
             <span className="purple-text"></span>
           </h2>
@@ -60,3 +61,7 @@ function Item(props) {
 }
 
 export default Item;
+
+
+
+
