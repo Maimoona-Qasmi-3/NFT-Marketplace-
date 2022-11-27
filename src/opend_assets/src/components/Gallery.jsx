@@ -9,10 +9,12 @@ function Gallery(props) {
   function fetchNFTs() {
     if(props.id != undefined) {
       setItems( props.id.map( (NFTId) => (
-        <Item id={NFTId} keu={NFTId.toText()}/>
+        <Item id={NFTId} key={NFTId.toText()}/>
       ))
       )
-    }
+    } else (
+      <h1>Sorry..You have no access</h1>
+    )
   }
 
   useEffect(() => {

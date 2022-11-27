@@ -22,6 +22,32 @@ dfx deploy --argument='("CryptoDunks #527", principal "gbdev-tyqsv-hnvqv-7mgz4-4
 
 http://localhost:8080/
 
+
+# Button HTML
+
+```
+<div className="Chip-root makeStyles-chipBlue-108 Chip-clickable">
+            <span
+              onClick={}
+              className="form-Chip-label"
+            >
+              Sell
+            </span>
+            </div>
+```
+
+# Price Input HTML
+
+```
+<input
+        placeholder="Price in DANG"
+        type="number"
+        className="price-input"
+        value={}
+        onChange={}
+      />
+```
+
 >=======
 
 # NFT-Marketplace-
