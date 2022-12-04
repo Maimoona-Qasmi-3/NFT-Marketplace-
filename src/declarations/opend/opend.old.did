@@ -1,6 +1,7 @@
 service : {
   getOpendCanisterId: () -> (principal) query;
   getOwnedNfts: (principal) -> (vec principal);
+  isListed: (principal) -> (bool) query;
   listItem: (principal, nat) -> (text);
   mInter: (vec nat8, text) -> (principal);
 }

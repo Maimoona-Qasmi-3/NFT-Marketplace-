@@ -5,6 +5,8 @@ import { idlFactory } from "../../../declarations/nft";
 import { Principal } from "@dfinity/principal";
 import Button from "./Button";
 import { opend } from "../../../declarations/opend";
+import CURRENT_USER_ID from "../index";
+import PriceLabel from "./PriceLabel";
 
 function Item(props) {
 
@@ -15,6 +17,8 @@ function Item(props) {
   const [priceInput, setPriceInput] = useState();
   const [loaderHidden, setLoaderHidden] = useState(true);
   const [blur, setBlur] = useState();
+  const [sellStatus, setStatus] = useState("");
+  const [priceLabel, setPriceLabel] = useState();
 
   const id = props.id;
 
@@ -41,15 +45,27 @@ function Item(props) {
     setOwner(owner.toText());
     setImage(image);
 
+    if (props.role == "collection") {
     const nftIsListed = await opend.isListed(props.id);
 
     if (nftIsListed) {
       setOwner("OpenD"); 
       setBlur({filter: "blur(4px)"});
+      setStatus("Listed");
     } else {
       setButton(<Button handleClick={handleSell} text={"Sell"}/>);
     }
+  } else if (props.role == "discover") {
+    const originalOwner = await opend.getOriginalOwner(props.id);
+    if (originalOwner.toText() !== CURRENT_USER_ID.toText()){
+      setButton(<Button handleClick={handleBuy} text={"Buy"}/>);  
+    }
+
+    const price = await opend.getNFTPrice(props.id);
+    setPriceLabel(<PriceLabel sellprice={price.toString()}/>);
   }
+
+}
 
   useEffect(() => {
     loadNFT();
@@ -68,6 +84,10 @@ function Item(props) {
     setButton(<Button handleClick={sellItem} text={"Confirm"}/>)
   }
 
+  async function handleBuy(){
+     console.log("Buy is triggered");
+  }
+
   async function sellItem(){
     setBlur({filter: "blur(4px)"});
     setLoaderHidden(false);
@@ -83,6 +103,7 @@ function Item(props) {
       setButton();
       setPriceInput();
       setOwner("OpenD");
+      setStatus("Listed");
     }
    }
   };
@@ -101,10 +122,11 @@ function Item(props) {
         <div></div>
       </div>
         <div className="disCardContent-root">
+           {priceLabel}
           <h2 className="disTypography-root makeStyles-bodyText-24 disTypography-h5 disTypography-gutterBottom">
 
             {name}
-            <span className="purple-text"></span>
+            <span className="purple-text"> {sellStatus}</span>
           </h2>
           <p className="disTypography-root makeStyles-bodyText-24 disTypography-body2 disTypography-colorTextSecondary">
             Owner: {owner}
